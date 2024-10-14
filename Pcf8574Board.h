@@ -13,7 +13,7 @@ class Pcf8574Board {
 
   private:
     int _boardAddress[8] = {0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27};
-
+    TwoWire *wire;
     typedef struct BoardPin {
       int boardNo;
       int boardPin;
@@ -28,8 +28,9 @@ class Pcf8574Board {
     Pcf8574 getPcf8574Object(int i);
 
   public:
-    Pcf8574Board() {
-      Wire.begin();
+    Pcf8574Board(TwoWire *wire) {
+      this->wire = wire;
+      //wire->begin();
     }
 
     void initPcf8574Boards(int totalPcf8574Boards);
