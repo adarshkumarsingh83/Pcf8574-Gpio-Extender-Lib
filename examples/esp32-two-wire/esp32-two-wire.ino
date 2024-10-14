@@ -44,7 +44,7 @@ void setup() {
   bool isOk = setPowerBoostKeepOn(1);
   Serial.println(String("IP5306 KeepOn ") + (isOk ? "OK" : "FAIL"));
   
-  //Wire = PCF8574T; // Switch to the second I2C bus
+  Wire = PCF8574T; // Switch to the second I2C bus
   
   pcf8574Board.initPcf8574Boards(NO_OF_BOARDS);
   MAX_PINS = NO_OF_BOARDS * 8;
@@ -68,4 +68,5 @@ void loop() {
     pcf8574Board.switchOff(i);
   }
   delay(2000);
+  
 }
